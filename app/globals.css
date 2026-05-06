@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Explicit source scanning (Tailwind v4) ── */
+@source "../app";
+@source "../components";
+@source "../lib";
+
+/* ── Design tokens ── */
+@theme {
+  --color-lin: #F5F1EA;
+  --color-noir: #111111;
+  --color-foret: #1F3A2E;
+  --color-cognac: #B8793E;
+  --color-sable: #D8C5A5;
+  --color-pierre: #8A8378;
+  --color-noyer: #5A3921;
+  --color-sauge: #A7B89A;
+
+  /* Fonts — @theme (not inline) so CSS vars are emitted on :root */
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Display typography ── */
+.text-display-xl {
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+.text-display-lg {
+  font-size: clamp(2.5rem, 4.5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.text-display-md {
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.text-display-sm {
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  line-height: 1.15;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Base reset ── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #F5F1EA;
+    color: #111111;
+    font-family: var(--font-sans);
+    line-height: 1.7;
+  }
+
+  input, textarea, select {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: #111111;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #8A8378;
+    opacity: 0.7;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Input component ── */
+.input-field {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #D8C5A5;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: #111111;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.input-field:focus {
+  border-color: #B8793E;
+  box-shadow: 0 0 0 2px #B8793E1A;
+}
+
+.input-field.error {
+  border-color: #E57373;
+}
+
+.input-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #8A8378;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #F5F1EA; }
+::-webkit-scrollbar-thumb { background: #D8C5A5; }
+::-webkit-scrollbar-thumb:hover { background: #B8793E; }
+
+/* ── Selection ── */
+::selection { background: #B8793E; color: #F5F1EA; }
+
+/* ── Focus visible ── */
+:focus-visible { outline: 2px solid #B8793E; outline-offset: 3px; }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

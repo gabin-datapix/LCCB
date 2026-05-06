@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#1F3A2E" rx="2.5"/>
+  <!-- Left rafter -->
+  <line x1="16" y1="5" x2="3" y2="22" stroke="#D8C5A5" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Right rafter -->
+  <line x1="16" y1="5" x2="29" y2="22" stroke="#D8C5A5" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Bottom chord -->
+  <line x1="3" y1="22" x2="29" y2="22" stroke="#D8C5A5" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- King post (vertical) -->
+  <line x1="16" y1="8.5" x2="16" y2="22" stroke="#D8C5A5" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- Tie beam (horizontal) — cognac accent -->
+  <line x1="7.5" y1="17" x2="24.5" y2="17" stroke="#B8793E" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

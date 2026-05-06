@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {
+    root: "/Users/gabinverhille/Desktop/LCCB",
+  },
 };
 
 export default nextConfig;
