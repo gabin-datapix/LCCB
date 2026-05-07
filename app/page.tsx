@@ -71,6 +71,7 @@ export default function HomePage() {
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1F3A2E]/50 via-[#111111]/40 to-[#111111]/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111111]/75 via-[#111111]/25 to-transparent" />
         </motion.div>
 
         {/* Decorative line */}
