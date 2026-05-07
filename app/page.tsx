@@ -175,7 +175,40 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* ─── 2. POSITIONNEMENT ─── */}
+      {/* ─── 2. RÉALISATIONS PREVIEW ─── */}
+      <section className="py-28 lg:py-36 px-8 md:px-12 lg:px-16 bg-[#D8C5A5]/15">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+            <SectionTitle
+              eyebrow="Réalisations"
+              title="Des projets bois, du simple au très ambitieux"
+            />
+            <AnimatedReveal delay={0.2}>
+              <Button href="/realisations" variant="secondary" size="md" className="shrink-0">
+                Voir toutes les réalisations
+                <ArrowUpRight size={13} />
+              </Button>
+            </AnimatedReveal>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {previewProjects.map((project, i) => (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                typeLabel={project.typeLabel}
+                location={project.location}
+                description={project.description}
+                tags={project.tags}
+                image={project.image}
+                index={i}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 3. POSITIONNEMENT ─── */}
       <section className="py-28 lg:py-36 px-8 md:px-12 lg:px-16 bg-[#F5F1EA]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
@@ -306,101 +339,112 @@ export default function HomePage() {
 
       {/* ─── 5. PROJET MANIFESTE : PIÈCE D'ÉCHECS ─── */}
       <section className="relative overflow-hidden bg-[#0D1F17]">
-        <div className="absolute inset-0 lg:left-[48%]">
-          <Image
-            src="/images/piece-echec.png"
-            alt="La plus grande pièce d'échecs du monde — LCCB Sautron"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 1024px) 100vw, 52vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F17] via-[#0D1F17]/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F17]/80 via-transparent to-[#0D1F17]/30" />
-        </div>
-
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")", backgroundSize: "200px 200px" }}
         />
-
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-[#B8793E]/60 via-[#B8793E]/20 to-transparent" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-12 lg:px-16 py-28 lg:py-40">
-          <div className="lg:max-w-[52%]">
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7 }}
-              className="flex items-center gap-3 mb-10"
-            >
-              <span className="block w-10 h-px bg-[#B8793E]" />
-              <span className="text-[#B8793E] text-[10px] uppercase tracking-[0.3em] font-sans">
-                Projet manifeste — Record du monde
-              </span>
-            </motion.div>
+        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-12 lg:px-16 py-28 lg:py-36">
+          {/* Eyebrow */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7 }}
+            className="flex items-center gap-3 mb-12"
+          >
+            <span className="block w-10 h-px bg-[#B8793E]" />
+            <span className="text-[#B8793E] text-[10px] uppercase tracking-[0.3em] font-sans">
+              Projet manifeste — Record du monde
+            </span>
+          </motion.div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="font-serif text-display-lg text-[#F5F1EA] leading-[1.05] mb-7"
-            >
-              La plus grande pièce d&apos;échecs du monde,{" "}
-              <em className="not-italic text-[#D8C5A5]">fabriquée à Sautron</em>
-            </motion.h2>
+          {/* Grille 2 colonnes */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-20 items-start">
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-[#A7B89A] font-sans text-base lg:text-lg leading-relaxed mb-10 max-w-xl"
-            >
-              Un projet hors norme où la conception numérique, le geste compagnon et la maîtrise du bois se rencontrent.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="space-y-5 mb-12"
-            >
-              <p className="text-[#D8C5A5]/80 font-sans text-sm leading-[1.85]">
-                Inaugurée à Sautron, près de Nantes, cette pièce monumentale représente un roi de près de 6,32 mètres de haut. Imaginée à la suite d&apos;un échange entre Renan Leboucher et le président du club d&apos;échecs de Sautron, elle dépasse le précédent record détenu depuis 2018 par un club situé à Saint-Louis, aux États-Unis.
-              </p>
-              <p className="text-[#D8C5A5]/80 font-sans text-sm leading-[1.85]">
-                Au-delà du record, cette réalisation illustre parfaitement la vision de LCCB : les métiers du bois mobilisent autant l&apos;intelligence de conception que la précision du geste. La pièce a nécessité une réflexion complexe sur les assemblages, les volumes coniques, la stabilité et la tenue de près de 4 tonnes de bois.
-              </p>
-              <p className="text-[#8A8378] font-sans text-sm leading-[1.85]">
-                Conçue sur Cadwork avec plus de 700 heures d&apos;études, la fabrication a mobilisé une machine à commandes numériques SCM Tech Z5, avec l&apos;intervention de Thibault Roche, jeune Compagnon, aux côtés de Renan Leboucher.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-4"
-            >
-              <a
-                href="https://www.leboisinternational.com/deuxieme-transformation/meuble/la-plus-grande-piece-dechecs-au-monde-visible-a-sautron-703789.php"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#B8793E] hover:bg-[#F5F1EA] text-[#F5F1EA] hover:text-[#111111] px-7 py-3.5 text-[11px] uppercase tracking-[0.12em] font-sans font-medium transition-all duration-300"
+            {/* Colonne gauche : texte */}
+            <div>
+              <motion.h2
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.9, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="font-serif text-display-md text-[#F5F1EA] leading-[1.05] mb-7"
               >
-                Découvrir l&apos;article
-                <ExternalLink size={13} />
-              </a>
-              <a
-                href="/realisations"
-                className="inline-flex items-center gap-3 border border-[#F5F1EA]/20 hover:border-[#B8793E]/60 text-[#D8C5A5] hover:text-[#F5F1EA] px-7 py-3.5 text-[11px] uppercase tracking-[0.12em] font-sans font-medium transition-all duration-300"
+                La plus grande pièce d&apos;échecs du monde,{" "}
+                <em className="not-italic text-[#D8C5A5]">fabriquée à Sautron</em>
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="text-[#A7B89A] font-sans text-base leading-relaxed mb-8"
               >
-                Voir nos réalisations
-                <ArrowRight size={13} />
-              </a>
+                Un projet hors norme où la conception numérique, le geste compagnon et la maîtrise du bois se rencontrent.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="space-y-4 mb-10"
+              >
+                <p className="text-[#D8C5A5]/80 font-sans text-sm leading-[1.85]">
+                  Inaugurée à Sautron, près de Nantes, cette pièce monumentale représente un roi de près de 6,32 mètres de haut. Elle dépasse le précédent record détenu depuis 2018 par un club situé à Saint-Louis, aux États-Unis.
+                </p>
+                <p className="text-[#D8C5A5]/80 font-sans text-sm leading-[1.85]">
+                  La pièce a nécessité une réflexion complexe sur les assemblages, les volumes coniques, la stabilité et la tenue de près de 4 tonnes de bois — plus de 700 heures d&apos;études sur Cadwork.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap items-center gap-4"
+              >
+                <a
+                  href="https://www.leboisinternational.com/deuxieme-transformation/meuble/la-plus-grande-piece-dechecs-au-monde-visible-a-sautron-703789.php"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-[#B8793E] hover:bg-[#F5F1EA] text-[#F5F1EA] hover:text-[#111111] px-7 py-3.5 text-[11px] uppercase tracking-[0.12em] font-sans font-medium transition-all duration-300"
+                >
+                  Découvrir l&apos;article
+                  <ExternalLink size={13} />
+                </a>
+                <a
+                  href="/realisations"
+                  className="inline-flex items-center gap-3 border border-[#F5F1EA]/20 hover:border-[#B8793E]/60 text-[#D8C5A5] hover:text-[#F5F1EA] px-7 py-3.5 text-[11px] uppercase tracking-[0.12em] font-sans font-medium transition-all duration-300"
+                >
+                  Voir nos réalisations
+                  <ArrowRight size={13} />
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Colonne droite : vidéo YouTube */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative aspect-video shadow-[0_24px_80px_rgba(0,0,0,0.5)] overflow-hidden">
+                <iframe
+                  src="https://www.youtube.com/embed/PtV7-RsOnuQ"
+                  title="La plus grande pièce d'échecs du monde — LCCB Sautron"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+              <span className="absolute -top-3 -left-3 block w-8 h-8 border-t-2 border-l-2 border-[#B8793E]" />
+              <span className="absolute -bottom-3 -right-3 block w-8 h-8 border-b-2 border-r-2 border-[#B8793E]" />
             </motion.div>
           </div>
         </div>
@@ -445,21 +489,19 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
 
-            {/* Vidéo YouTube */}
+            {/* Photo équipe */}
             <AnimatedReveal direction="left">
-              <div className="relative w-full overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
-                <div className="aspect-video">
-                  <iframe
-                    src="https://www.youtube.com/embed/PtV7-RsOnuQ"
-                    title="Renan Leboucher — LCCB Charpente Sautron"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="w-full h-full"
-                  />
-                </div>
-                {/* Corner marks */}
-                <span className="absolute top-4 left-4 block w-8 h-8 border-t-2 border-l-2 border-[#B8793E] pointer-events-none" />
-                <span className="absolute bottom-4 right-4 block w-8 h-8 border-b-2 border-r-2 border-[#B8793E] pointer-events-none" />
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Image
+                  src="/images/equipe-en-atelier-ou-chantier.png"
+                  alt="Équipe LCCB en atelier — Sautron"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 via-transparent to-transparent" />
+                <span className="absolute top-5 left-5 block w-10 h-10 border-t-2 border-l-2 border-[#B8793E]" />
+                <span className="absolute bottom-5 right-5 block w-10 h-10 border-b-2 border-r-2 border-[#B8793E]" />
               </div>
             </AnimatedReveal>
 
@@ -504,39 +546,6 @@ export default function HomePage() {
                 </Button>
               </div>
             </AnimatedReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 7. RÉALISATIONS PREVIEW ─── */}
-      <section className="py-28 lg:py-36 px-8 md:px-12 lg:px-16 bg-[#D8C5A5]/15">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
-            <SectionTitle
-              eyebrow="Réalisations"
-              title="Des projets bois, du simple au très ambitieux"
-            />
-            <AnimatedReveal delay={0.2}>
-              <Button href="/realisations" variant="secondary" size="md" className="shrink-0">
-                Voir toutes les réalisations
-                <ArrowUpRight size={13} />
-              </Button>
-            </AnimatedReveal>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {previewProjects.map((project, i) => (
-              <ProjectCard
-                key={project.id}
-                title={project.title}
-                typeLabel={project.typeLabel}
-                location={project.location}
-                description={project.description}
-                tags={project.tags}
-                image={project.image}
-                index={i}
-              />
-            ))}
           </div>
         </div>
       </section>
