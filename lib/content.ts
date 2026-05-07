@@ -264,6 +264,26 @@ export const WORKSHOP = {
 
 export const PROJECTS = [
   {
+    id: 0,
+    featured: true,
+    title: "La plus grande pièce d'échecs du monde",
+    type: "hors-norme",
+    typeLabel: "Projet hors norme",
+    location: "Sautron",
+    description: "Fabrication d'un roi monumental en bois de près de 6,32 m de haut, conçu sur Cadwork et réalisé à partir de Douglas naturel.",
+    longDescription: "Inaugurée à Sautron, cette pièce d'échecs monumentale représente un roi de près de 6,32 m de haut. Le projet a nécessité plus de 700 heures d'études et de conception numérique sur Cadwork, près de 4 tonnes de bois, 9,36 m³ de bois brut et 585 mètres linéaires de Douglas naturel. Réalisée en atelier avec une forte exigence technique, elle illustre la capacité de LCCB à mener des projets bois complexes, uniques et ambitieux.",
+    tags: ["Record du monde", "Cadwork", "Douglas naturel"],
+    image: "/images/piece-echec.png",
+    stats: [
+      { value: "6,32 m", label: "de hauteur" },
+      { value: "≈ 4 t", label: "de bois" },
+      { value: "700 h+", label: "d'études CAO" },
+      { value: "9,36 m³", label: "de bois brut" },
+      { value: "585 ml", label: "de Douglas naturel" },
+      { value: "4 ans", label: "de projet" },
+    ],
+  },
+  {
     id: 1,
     title: "Extension bois contemporaine",
     type: "ossature-bois",
