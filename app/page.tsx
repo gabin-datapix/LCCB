@@ -339,6 +339,19 @@ export default function HomePage() {
 
       {/* ─── 5. PROJET MANIFESTE : PIÈCE D'ÉCHECS ─── */}
       <section className="relative overflow-hidden bg-[#0D1F17]">
+        {/* Image de fond */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/piece-echec.png"
+            alt="La plus grande pièce d'échecs du monde — LCCB Sautron"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-[#0D1F17]/75" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F17]/90 via-[#0D1F17]/50 to-[#0D1F17]/60" />
+        </div>
+
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")", backgroundSize: "200px 200px" }}
         />
