@@ -147,7 +147,7 @@ export default function RealisationsPage() {
                         </a>
                         <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-[#D8C5A5]/60 font-sans px-2">
                           <ArrowUpRight size={11} />
-                          <span>Projet inauguré le 8 juillet</span>
+                          <span>Projet inauguré en 2022</span>
                         </div>
                       </div>
                     </div>
