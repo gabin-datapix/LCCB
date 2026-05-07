@@ -31,6 +31,8 @@ export default function RealisationsPage() {
     ? []
     : standardProjects.filter((p) => active === "all" || p.type === active);
 
+  // La featured va toujours en bas
+
   const handleFilter = useCallback((id: string) => {
     setActive(id);
   }, []);
@@ -67,7 +69,27 @@ export default function RealisationsPage() {
             </div>
           </div>
 
-          {/* ── CARTE FEATURED ── */}
+          {/* Grille standard — en premier */}
+          {filtered.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+              <AnimatePresence mode="sync">
+                {filtered.map((project, i) => (
+                  <ProjectCard
+                    key={project.id}
+                    title={project.title}
+                    typeLabel={project.typeLabel}
+                    location={project.location}
+                    description={project.description}
+                    tags={project.tags}
+                    image={project.image}
+                    index={i}
+                  />
+                ))}
+              </AnimatePresence>
+            </div>
+          )}
+
+          {/* ── CARTE FEATURED en bas ── */}
           <AnimatePresence>
             {showFeatured && featuredProject && (
               <motion.div
@@ -166,26 +188,6 @@ export default function RealisationsPage() {
           >
             {(showFeatured ? 1 : 0) + filtered.length} réalisation{((showFeatured ? 1 : 0) + filtered.length) > 1 ? "s" : ""}
           </motion.p>
-
-          {/* Grille standard */}
-          {filtered.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              <AnimatePresence mode="sync">
-                {filtered.map((project, i) => (
-                  <ProjectCard
-                    key={project.id}
-                    title={project.title}
-                    typeLabel={project.typeLabel}
-                    location={project.location}
-                    description={project.description}
-                    tags={project.tags}
-                    image={project.image}
-                    index={i}
-                  />
-                ))}
-              </AnimatePresence>
-            </div>
-          )}
 
           {(showFeatured ? 1 : 0) + filtered.length === 0 && (
             <motion.div
