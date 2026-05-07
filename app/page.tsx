@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ShieldCheck, Award, Leaf, Clock } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ExternalLink, ShieldCheck, Award, Leaf, Clock } from "lucide-react";
 import { SERVICES, COMPANY, PROJECTS } from "@/lib/content";
 import AnimatedReveal from "@/components/ui/AnimatedReveal";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -184,6 +184,154 @@ export default function HomePage() {
             scroll
           </span>
         </motion.div>
+      </section>
+
+      {/* ─── PROJET MANIFESTE : PIÈCE D'ÉCHECS ─── */}
+      <section className="relative overflow-hidden bg-[#0D1F17]">
+        {/* Image de fond plein écran — côté droit */}
+        <div className="absolute inset-0 lg:left-[48%]">
+          <Image
+            src="/images/piece-echec.png"
+            alt="La plus grande pièce d'échecs du monde — LCCB Sautron"
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 1024px) 100vw, 52vw"
+          />
+          {/* Vignette sur l'image */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F17] via-[#0D1F17]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F17]/80 via-transparent to-[#0D1F17]/30" />
+        </div>
+
+        {/* Grain texture overlay */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")", backgroundSize: "200px 200px" }}
+        />
+
+        {/* Ligne décorative haut */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-[#B8793E]/60 via-[#B8793E]/20 to-transparent" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-12 lg:px-16 py-28 lg:py-40">
+          <div className="lg:max-w-[52%]">
+
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7 }}
+              className="flex items-center gap-3 mb-10"
+            >
+              <span className="block w-10 h-px bg-[#B8793E]" />
+              <span className="text-[#B8793E] text-[10px] uppercase tracking-[0.3em] font-sans">
+                Projet manifeste — Record du monde
+              </span>
+            </motion.div>
+
+            {/* Titre */}
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.9, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="font-serif text-display-lg text-[#F5F1EA] leading-[1.05] mb-7"
+            >
+              La plus grande pièce d&apos;échecs du monde,{" "}
+              <em className="not-italic text-[#D8C5A5]">fabriquée à Sautron</em>
+            </motion.h2>
+
+            {/* Sous-titre */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-[#A7B89A] font-sans text-base lg:text-lg leading-relaxed mb-10 max-w-xl"
+            >
+              Un projet hors norme où la conception numérique, le geste compagnon et la maîtrise du bois se rencontrent.
+            </motion.p>
+
+            {/* Texte principal */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="space-y-5 mb-12"
+            >
+              <p className="text-[#D8C5A5]/80 font-sans text-sm leading-[1.85]">
+                Inaugurée à Sautron, près de Nantes, cette pièce monumentale représente un roi de près de 6,32 mètres de haut. Imaginée à la suite d&apos;un échange entre Renan Leboucher et le président du club d&apos;échecs de Sautron, elle dépasse le précédent record détenu depuis 2018 par un club situé à Saint-Louis, aux États-Unis.
+              </p>
+              <p className="text-[#D8C5A5]/80 font-sans text-sm leading-[1.85]">
+                Au-delà du record, cette réalisation illustre parfaitement la vision de LCCB : les métiers du bois mobilisent autant l&apos;intelligence de conception que la précision du geste. La pièce a nécessité une réflexion complexe sur les assemblages, les volumes coniques, la stabilité et la tenue de près de 4 tonnes de bois.
+              </p>
+              <p className="text-[#8A8378] font-sans text-sm leading-[1.85]">
+                Conçue sur Cadwork avec plus de 700 heures d&apos;études, la fabrication a mobilisé une machine à commandes numériques SCM Tech Z5, avec l&apos;intervention de Thibault Roche, jeune Compagnon, aux côtés de Renan Leboucher.
+              </p>
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <a
+                href="https://www.leboisinternational.com/deuxieme-transformation/meuble/la-plus-grande-piece-dechecs-au-monde-visible-a-sautron-703789.php"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-[#B8793E] hover:bg-[#F5F1EA] text-[#F5F1EA] hover:text-[#111111] px-7 py-3.5 text-[11px] uppercase tracking-[0.12em] font-sans font-medium transition-all duration-300"
+              >
+                Découvrir l&apos;article
+                <ExternalLink size={13} />
+              </a>
+              <a
+                href="/realisations"
+                className="inline-flex items-center gap-3 border border-[#F5F1EA]/20 hover:border-[#B8793E]/60 text-[#D8C5A5] hover:text-[#F5F1EA] px-7 py-3.5 text-[11px] uppercase tracking-[0.12em] font-sans font-medium transition-all duration-300"
+              >
+                Voir nos réalisations
+                <ArrowRight size={13} />
+              </a>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Chiffres clés — bande horizontale en bas */}
+        <div className="relative z-10 border-t border-[#F5F1EA]/8">
+          <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 divide-x divide-[#F5F1EA]/8">
+              {[
+                { value: "6,32 m", label: "de hauteur" },
+                { value: "≈ 4 t", label: "de bois" },
+                { value: "4 ans", label: "de projet" },
+                { value: "700 h+", label: "d'études CAO" },
+                { value: "9,36 m³", label: "de bois brut" },
+                { value: "585 ml", label: "de Douglas naturel" },
+                { value: "3 sem.", label: "de fabrication" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: i * 0.07 }}
+                  className="py-8 px-5 first:pl-0 last:pr-0 text-center"
+                >
+                  <span className="block font-serif text-xl lg:text-2xl text-[#B8793E] leading-none mb-2">
+                    {stat.value}
+                  </span>
+                  <span className="block text-[9px] uppercase tracking-[0.18em] text-[#8A8378] font-sans">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Ligne décorative bas */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#B8793E]/40 via-[#B8793E]/10 to-transparent" />
       </section>
 
       {/* ─── POSITIONNEMENT ─── */}
